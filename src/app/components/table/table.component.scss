@@ -1,4 +1,10 @@
 .table-invoice {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-content:center;
+
   font-size: 14px;
 
   .label{
@@ -24,5 +30,42 @@
     color: #E06766;
     border-color: #E06766;
     width: 100%;
+  }
+
+  .border-row, .border-col {
+    border: .5px solid #929292;
+  }
+
+  .form-resp, .table-resp {
+    display: none;
+  }
+
+  .first-header {
+    background-color: #767676;
+    color: #fff;
+  }
+
+  .align-end {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  @media screen and (max-width: 770px) {
+    .table-default, .default-form {
+      display: none;
+    }
+    .form-resp, .table-resp {
+      display: inline-block;
+    }
+    .btn-process {
+      width: 95%;
+    }
+    .align-end {
+      display: flex;
+      justify-content: center;
+    }
+    .btn-delete {
+      width: 80%;
+    }
   }
 }

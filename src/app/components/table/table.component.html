@@ -1,5 +1,79 @@
 <div class="table-invoice">
-  <form >
+  <div class="form-resp">
+    <form>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="invoiceNumber">
+            <strong>Invoice Number</strong>
+          </label>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            id="invoiceNumber"
+            placeholder="000000000"
+            [(ngModel)]="invoiceNumber"
+            name="invoiceNumber">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="netInput">
+            <strong>Net</strong>
+          </label>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" id="netInput" placeholder="$ 1.000,00" [(ngModel)]="net" name="net">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="netInput" class="d-block">
+            <strong>% Tax</strong>
+          </label>
+        </div>
+        <div class="col">
+          <div class="btn-group d-block" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle btn-tax"
+                    aria-controls="dropdown-basic">
+              {{tax || tax === 0 ? tax: 'Select Tax'}} %<span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li *ngFor="let tax of taxes" role="menuitem">
+                <a class="dropdown-item" (click)="taxSelected(tax)">{{tax}}%</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <label for="netTotal">
+            <strong>Total</strong>
+          </label>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" id="netTotal" placeholder="$ 1.000,00" [disabled]="true" [(ngModel)]="total" name="total">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <button type="button" class="btn btn-primary mr-1 btn-add" (click)="addInvoice()">
+            Add
+          </button>
+        </div>
+        <div class="col">
+          <button type="button" class="btn btn-primary btn-clear" (click)="clearInvoice()">
+            Clear
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <form class="default-form">
     <div class="row">
       <div class="col">
         <label for="invoiceNumber">
@@ -60,7 +134,75 @@
     </div>
   </form>
   
-  <div class="row mt-4">
+  <div class="container table-resp">
+    <div *ngFor="let item of invoices; let i = index" class="mb-3">
+      <div class="row border-row first-header">
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            Invoince Number
+          </div>
+        </div>
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            {{item.invoiceNumber}}
+          </div>
+        </div>
+      </div>
+      <div class="row border-row">
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            Net
+          </div>
+        </div>
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            $ {{item.net}}
+          </div>
+        </div>
+      </div>
+      <div class="row border-row">
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            % Tax
+          </div>
+        </div>
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            {{item.tax}} %
+          </div>
+        </div>
+      </div>
+      <div class="row border-row">
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            Tax
+          </div>
+        </div>
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            {{item.totalTax}}
+          </div>
+        </div>
+      </div>
+      <div class="row border-row">
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            Total
+          </div>
+        </div>
+        <div class="col border-col">
+          <div class="d-flex justify-content-center">
+            $ {{item.total}}
+          </div>
+        </div>
+      </div>
+      <div class="row border-row d-flex justify-content-center p-1">
+        <button type="button" class="btn btn-danger btn-delete" (click)="deleteInvoice(item, i)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4 table-default">
     <table class="table">
       <thead>
         <tr class="table-dark">
@@ -122,15 +264,17 @@
           </td>
           <td>
             <div class="d-flex justify-content-center">
-              <button type="button" class="btn btn-danger" (click)="deleteInvoice(item, i)">Remove</button>
+              <div class="pa-2">
+                <button type="button" class="btn btn-danger btn-delete" (click)="deleteInvoice(item, i)">Remove</button>
+              </div>
             </div>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="row mt-2 justify-content-end">
-    <button type="button" class="btn btn-primary mr-1" (click)="goResults()">
+  <div class="row mt-2 align-end" >
+    <button type="button" class="btn btn-primary btn-process mr-1" (click)="goResults()">
       Process and Continue
     </button>
   </div>
