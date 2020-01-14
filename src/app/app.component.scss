@@ -1,5 +1,9 @@
 .app-container{
   .image-content {
     background: #fff;
+
+    img:hover {
+      cursor: pointer;
+    }
   }
 }
