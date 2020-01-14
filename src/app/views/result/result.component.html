@@ -1,0 +1,51 @@
+<div class="result-invoice">
+  <div class="container">
+    <div class="row mt-4">
+      <table class="table">
+        <thead>
+          <tr class="table-dark">
+            <th scope="col">
+              <div class="d-flex justify-content-center">
+                $ Total Net
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex justify-content-center">
+                $ Total Taxes
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex justify-content-center">
+                $ Total Global
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of totalInvoices; let i = index">
+            <th>
+              <div class="d-flex justify-content-center">
+                $ {{item.totalNet}}
+              </div>
+            </th>
+            <td>
+              <div class="d-flex justify-content-center">
+                $ {{item.totalTaxes}}
+              </div>
+            </td>
+            <td>
+              <div class="d-flex justify-content-center">
+                $ {{item.totalGlobal}}
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row mt-2 justify-content-end">
+      <button type="button" class="btn btn-danger mr-1" (click)="deleteWord()">
+        Delete Work
+      </button>
+    </div>
+  </div>
+</div>

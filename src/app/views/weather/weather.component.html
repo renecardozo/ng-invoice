@@ -1,0 +1,24 @@
+<div class="weather-container">
+  <div class="container">
+    <div class="card-deck">
+      <div class="card" *ngFor="let item of weatherList">
+        <div class="text-center">
+          <img src="http://openweathermap.org/img/wn/{{item.weather[0].icon}}@2x.png" class="rounded" alt="...">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">
+            <strong>City: </strong>{{city.name}}
+          </h5>
+          <p class="card-text">
+            <strong>Description: </strong>{{item.weather[0].description}}</p>
+          <p class="card-text">
+            <strong>Main : </strong>{{item.weather[0].main}}
+          </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{item.dt_txt | date: 'fullDate' }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
