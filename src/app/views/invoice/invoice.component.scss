@@ -1,7 +1,7 @@
 .invoice {
   .weather-container {
     padding: 30px 20px;
-    margin: 15px 12%;
+    margin: 15px 19%;
     background-color: #767676;
     color: #fff;
     font-weight: 700;
@@ -12,6 +12,13 @@
     border-radius: 5px;
     &:hover {
       cursor: pointer;
+    }
+  }
+
+  @media screen and (max-width: 770px) {
+    .weather-container {
+      margin: 5px auto;
+      width: 95%;
     }
   }
 }
