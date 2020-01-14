@@ -19,6 +19,7 @@ import { ResultComponent } from './views/result/result.component';
 import { InvoiceService } from './services/invoice.service';
 import { SanitizerService } from './utils/sanitizer.service';
 import { WeatherService } from './services/weather.service';
+import { TextToNumberDirective } from './directives/text-to-number.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { WeatherService } from './services/weather.service';
     InvoiceComponent,
     TableComponent,
     WeatherComponent,
-    ResultComponent
+    ResultComponent,
+    TextToNumberDirective
   ],
   imports: [
     BrowserModule,

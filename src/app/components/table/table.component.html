@@ -14,7 +14,8 @@
             id="invoiceNumber"
             placeholder="000000000"
             [(ngModel)]="invoiceNumber"
-            name="invoiceNumber">
+            name="invoiceNumber"
+            appTextToNumber>
         </div>
       </div>
       <div class="row mb-3">
@@ -24,7 +25,14 @@
           </label>
         </div>
         <div class="col">
-          <input type="text" class="form-control" id="netInput" placeholder="$ 1.000,00" [(ngModel)]="net" name="net">
+          <input
+            type="text"
+            class="form-control"
+            id="netInput"
+            placeholder="$ 1.000,00"
+            [(ngModel)]="net"
+            name="net"
+            appTextToNumber>
         </div>
       </div>
       <div class="row mb-3">
@@ -85,13 +93,21 @@
           id="invoiceNumber"
           placeholder="000000000"
           [(ngModel)]="invoiceNumber"
-          name="invoiceNumber">
+          name="invoiceNumber"
+          appTextToNumber>
       </div>
       <div class="col">
         <label for="netInput">
           <strong>Net</strong>
         </label>
-        <input type="text" class="form-control" id="netInput" placeholder="$ 1.000,00" [(ngModel)]="net" name="net">
+        <input
+          type="text"
+          class="form-control"
+          id="netInput"
+          placeholder="$ 1.000,00"
+          [(ngModel)]="net"
+          name="net"
+          appTextToNumber>
       </div>
       <div class="col">
         <label for="netInput" class="d-block">
@@ -114,7 +130,14 @@
         <label for="netTotal">
           <strong>Total</strong>
         </label>
-        <input type="text" class="form-control" id="netTotal" placeholder="$ 1.000,00" [disabled]="true" [(ngModel)]="total" name="total">
+        <input
+          type="text"
+          class="form-control"
+          id="netTotal"
+          placeholder="$ 1.000,00"
+          [disabled]="true"
+          [(ngModel)]="total"
+          name="total">
       </div>
       <div class="col">
         <div class="label d-block pt-2">Actions</div>
